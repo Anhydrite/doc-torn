@@ -22,7 +22,7 @@ This repository contains skills that maintain structured documentation always in
 
 Copy this prompt to any AI coding agent — it will adapt to its own platform:
 
-> Install doc-torn for your platform: clone https://github.com/Anhydrite/doc-torn, register the 3 skills (structured-documentation, doc-driven-exploration, documentation-consistency), and build the doc-torn-scan binary.
+> Install doc-torn for your platform: clone https://github.com/Anhydrite/doc-torn in /opt/doc-torn, register the 3 skills (structured-documentation, doc-driven-exploration, documentation-consistency), and build the doc-torn-scan binary.
 
 ### Per-Harness Guides
 
