@@ -1,0 +1,63 @@
+#!/bin/sh
+# Pre-commit hook: verify documentation is in sync with code (doc-torn verify mode)
+# https://github.com/Anhydrite/doc-torn
+
+PROJECT_ROOT="$(git rev-parse --show-toplevel)"
+DOCS_DIR="$PROJECT_ROOT/docs"
+ERRORS=0
+
+echo "🔍 doc-torn: verifying documentation sync..."
+
+# Check AGENTS.md exists
+if [ ! -f "$PROJECT_ROOT/AGENTS.md" ]; then
+  echo "  ❌ AGENTS.md (agent guide) is missing at project root"
+  ERRORS=$((ERRORS + 1))
+fi
+
+# Check L0 exists
+if [ ! -f "$DOCS_DIR/README.md" ]; then
+  echo "  ❌ docs/README.md (L0) is missing"
+  ERRORS=$((ERRORS + 1))
+fi
+
+# Check architecture docs exist
+if [ ! -f "$DOCS_DIR/architecture/architecture.md" ] && [ ! -f "$DOCS_DIR/architecture/architecture-fonctionnelle.md" ]; then
+  echo "  ❌ docs/architecture/architecture.md is missing"
+  ERRORS=$((ERRORS + 1))
+fi
+
+if [ ! -f "$DOCS_DIR/architecture/dependency-matrix.md" ]; then
+  echo "  ❌ docs/architecture/dependency-matrix.md is missing"
+  ERRORS=$((ERRORS + 1))
+fi
+
+# Check user docs exist
+if [ ! -f "$DOCS_DIR/user/definitions.md" ]; then
+  echo "  ❌ docs/user/definitions.md is missing"
+  ERRORS=$((ERRORS + 1))
+fi
+
+if [ ! -f "$DOCS_DIR/user/dev-process.md" ]; then
+  echo "  ❌ docs/user/dev-process.md is missing"
+  ERRORS=$((ERRORS + 1))
+fi
+
+# For each feature in docs/features/, check it has a README.md
+if [ -d "$DOCS_DIR/features" ]; then
+  for feature_dir in "$DOCS_DIR/features"/*/; do
+    feature_name=$(basename "$feature_dir")
+    if [ ! -f "${feature_dir}README.md" ]; then
+      echo "  ❌ docs/features/$feature_name/README.md is missing"
+      ERRORS=$((ERRORS + 1))
+    fi
+  done
+fi
+
+if [ $ERRORS -gt 0 ]; then
+  echo "❌ doc-torn: $ERRORS documentation issue(s) found. Fix before commit."
+  echo "   Run opencode to invoke doc-torn update mode."
+  exit 1
+fi
+
+echo "✅ doc-torn: documentation is complete."
+exit 0

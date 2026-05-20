@@ -1,0 +1,23 @@
+#!/bin/sh
+# Post-commit hook: reminder to sync documentation (doc-torn update mode)
+# https://github.com/Anhydrite/doc-torn
+
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "  📚 doc-torn: documentation reminder"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+echo "  Did you update the documentation?"
+echo ""
+echo "  Checklist:"
+echo "  □ docs/README.md (L0)"
+echo "  □ docs/features/<name>/README.md (L1)"
+echo "  □ docs/architecture/dependency-matrix.md"
+echo "  □ docs/user/definitions.md"
+echo ""
+echo "  Run opencode → load doc-torn update mode"
+echo "  to sync documentation with this change."
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+exit 0
