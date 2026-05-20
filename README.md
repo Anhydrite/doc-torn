@@ -1,7 +1,5 @@
 # doc-torn
 
-[GitHub](https://github.com/Anhydrite/doc-torn)
-
 **Project that provides structured documentation skills for AI coding agents.**
 
 This repository contains skills that maintain structured documentation always in sync with the code, following a hierarchy (L0 → L1 → L2 → L3) with an explicit dependency matrix between features.
