@@ -8,6 +8,9 @@ graph TD
         SD[structured-documentation]
         DDE[doc-driven-exploration]
         DC[documentation-consistency]
+    end
+
+    subgraph Tools
         TS[doc-torn-scan]
     end
 
