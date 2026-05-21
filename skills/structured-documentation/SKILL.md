@@ -118,7 +118,7 @@ graph LR
 
 **Prerequisite:** Ensure `doc-torn-scan` is installed:
 ```bash
-which doc-torn-scan || (cd tools/doc-torn-scan && go build -o ~/.local/bin/doc-torn-scan .)
+which doc-torn-scan || ([ -d /opt/doc-torn ] || sudo git clone https://github.com/Anhydrite/doc-torn /opt/doc-torn) && cd /opt/doc-torn/tools/doc-torn-scan && go build -o ~/.local/bin/doc-torn-scan .
 ```
 
 **Do not ask the user for permission or confirmation between steps.**
